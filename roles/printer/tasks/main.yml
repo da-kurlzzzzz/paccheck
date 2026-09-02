@@ -1,0 +1,10 @@
+- name: Pretty print differences
+  vars:
+    cols: 3
+  ansible.builtin.debug:
+    msg: |
+      {{ title }}
+      {% for row in packages_to_print | sort | batch(cols) %}
+      {% for col in row %}  {{ "%-25s" | format(col | default('')) }}{% endfor %}
+
+      {% endfor %}

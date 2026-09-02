@@ -1,0 +1,10 @@
+- name: Ask user to save extra packages
+  ansible.builtin.pause:
+    prompt: "Save extra packages to {{ pacpac_config_file }}? [Y/n]"
+  register: ans
+
+- name: Save some vars to file
+  ansible.builtin.template:
+    src: new-packages.yml.j2
+    dest: "{{ pacpac_config_file }}"
+  when: ans.user_input | length == 0 or ans.user_input | lower | first == 'y'
