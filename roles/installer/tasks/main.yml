@@ -1,0 +1,10 @@
+- name: Ask user to install missing packages
+  pause:
+    prompt: Install missing packages? [Y/n]
+  register: ans
+
+- name: Install missing native packages
+  command: pacman -S --noconfirm {{ item }}
+  loop: "{{ missing_packages }}"
+  become: true
+  when: ans.user_input | length == 0 or ans.user_input | lower | first == 'y'

@@ -3,10 +3,13 @@
 - hosts: myself
   gather_subset:
     - '!all'
-  vars_files: group_vars/all/diy-formats.yml
+  vars_files:
+    - group_vars/all/diy-formats.yml
+    - ~/.config/pacpac/packages.yml
   roles:
     - differ
     - saver
     - differ
-    #- installer
-    #- reaper
+    - installer
+    - differ
+    - reaper
