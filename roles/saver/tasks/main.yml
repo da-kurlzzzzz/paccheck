@@ -3,8 +3,9 @@
     prompt: Save extra packages? [Y/n]
   register: ans
 
-- name: Save some vars to file
-  template:
-    src: new-vars.yml.j2
-    dest: "{{ playbook_dir }}/group_vars/all/sortme-packages.yml"
+- name: Append extra packages to config file
+  lineinfile:
+    path: ~/.config/pacpac/packages.yml
+    line: "  - name: {{ item }}"
+  loop: "{{ extra_packages }}"
   when: ans.user_input | length == 0 or ans.user_input | lower | first == 'y'
