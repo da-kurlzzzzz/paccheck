@@ -7,6 +7,5 @@
   lineinfile:
     path: ~/.config/pacpac/packages.yml
     line: "  - name: {{ item }}"
-    create: true
   loop: "{{ extra_packages }}"
   when: ans.user_input | length == 0 or ans.user_input | lower | first == 'y'

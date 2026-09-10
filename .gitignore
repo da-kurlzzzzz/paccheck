@@ -1,1 +1,50 @@
-Nothing needs to be added to .gitignore since the changes only include source/config files (.yml) without any build artifacts, dependencies, or temporary files that require ignoring.
+```
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git/modules/
+.DS_Store
+*.swp
+*~
+.pytest_cache/
+.mypy_cache/
+.hypothesis/
+
+# Ansible
+*.retry
+*.log
+roles/*/files/
+roles/*/templates/
+inventory/group_vars/
+inventory/host_vars/
+```

@@ -4,7 +4,8 @@
   register: ans
 
 - name: Install missing native packages
-  command: pacman -S --noconfirm {{ item }}
-  loop: "{{ missing_packages }}"
+  community.general.pacman:
+    name: "{{ missing_packages }}"
+    state: present
   become: true
   when: ans.user_input | length == 0 or ans.user_input | lower | first == 'y'
